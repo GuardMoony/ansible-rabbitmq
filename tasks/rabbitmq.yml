@@ -23,6 +23,7 @@
     vhost: "{{ item.vhost|default('/') }}"
     permissions: "{{ item.permissions|default(omit) }}"
     tags: "{{ item.tags|default('') }}"
+    force: yes
   with_items: "{{ rabbitmq_users }}"
   no_log: true
   tags: [configuration,rabbitmq]
