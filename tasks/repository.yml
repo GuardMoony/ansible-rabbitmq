@@ -2,12 +2,22 @@
 # Setup installation repositories
 # Standard repository for Debian / Ubuntu (http://www.rabbitmq.com/install-debian.html)
 
-- name: import repository key
+- name: import Erlang Solutions repository key
+  apt_key:
+    url: "{{ rabbitmq_erlang_repository_key_url }}"
+    state: present
+
+- name: import RabbitMQ repository key
   apt_key:
     url: "{{ rabbitmq_repository_key_url }}"
     state: present
 
-- name: add apt repository
+- name: add Erlang Solutions apt repository
+  apt_repository:
+    repo: "deb {{ rabbitmq_erlang_repository_url }}{{ ansible_distribution | lower }} {{ ansible_distribution_release }} contrib"
+    state: present
+
+- name: add RabbitMQ apt repository
   apt_repository:
     repo: "deb {{ rabbitmq_repository_url }} {{ ansible_distribution_release }} main"
     update_cache: yes

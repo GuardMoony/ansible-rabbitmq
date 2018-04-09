@@ -1,9 +1,17 @@
 ---
 # Install required packages
 
-- name: install required packages
+- name: install dependencies
   apt:
     update_cache: yes
+    force: yes
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - erlang-nox
+
+- name: install required packages
+  apt:
     force: yes
     pkg: "{{ item }}"
     state: present

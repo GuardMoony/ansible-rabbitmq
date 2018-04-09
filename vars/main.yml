@@ -1,3 +1,6 @@
 ---
 rabbitmq_repository_key_url: https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
 rabbitmq_repository_url: https://dl.bintray.com/rabbitmq/debian
+
+rabbitmq_erlang_repository_key_url: "https://packages.erlang-solutions.com/{{ ansible_distribution | lower }}/erlang_solutions.asc"
+rabbitmq_erlang_repository_url: https://packages.erlang-solutions.com/
