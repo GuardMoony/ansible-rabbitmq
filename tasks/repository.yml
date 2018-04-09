@@ -1,15 +1,14 @@
 ---
 # Setup installation repositories
-# Standart repository for Debian / Ubuntu (http://www.rabbitmq.com/install-debian.html)
+# Standard repository for Debian / Ubuntu (http://www.rabbitmq.com/install-debian.html)
 
 - name: import repository key
   apt_key:
-    url: http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+    url: "{{ rabbitmq_repository_key_url }}"
     state: present
 
 - name: add apt repository
   apt_repository:
-    repo: "deb http://www.rabbitmq.com/debian/ testing main"
+    repo: "deb {{ rabbitmq_repository_url }} {{ ansible_distribution_release }} main"
     update_cache: yes
     state: present
-
