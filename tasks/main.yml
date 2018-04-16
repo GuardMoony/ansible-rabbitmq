@@ -1,10 +1,23 @@
 ---
 
-- include: repository.yml
+- include: repository-yum.yml
   tags: repository
+  when: ansible_os_family == 'RedHat'
 
-- include: packages.yml
+- include: repository-apt.yml
+  tags: repository
+  when: ansible_os_family == 'Debian'
+
+- include: packages-yum.yml
   tags: packages
+  when: ansible_os_family == 'RedHat'
+
+- include: packages-apt.yml
+  tags: packages
+  when: ansible_os_family == 'Debian'
+
+- include: logrotate.yml
+  tags: [packages,rabbitmq]
 
 - include: config-cluster.yml
   when: rabbitmq_create_cluster

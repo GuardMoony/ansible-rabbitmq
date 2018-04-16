@@ -1,14 +1,5 @@
 ---
-# Install required packages
-
-- name: install required packages
-  apt:
-    update_cache: yes
-    force: yes
-    pkg: "{{ item }}"
-    state: present
-  with_items:
-    - rabbitmq-server
+# Customize logrotate rules
 
 - name: customize logrotate rules
   template:

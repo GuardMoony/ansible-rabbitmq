@@ -1,0 +1,6 @@
+---
+- name: Ensure RabbitMQ RPM key is present
+  rpm_key:
+    key: https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc
+    state: present
+
