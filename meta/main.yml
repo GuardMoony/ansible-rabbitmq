@@ -16,6 +16,9 @@ galaxy_info:
     versions:
     - squeeze
     - wheezy
+  - name: Amazon Linux
+    versions:
+    - 2017.09
   categories:
   - clustering
 dependencies: []
