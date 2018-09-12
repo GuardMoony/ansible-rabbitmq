@@ -2,6 +2,7 @@
 
 rabbitmq_erlang_cookie: 1qa2ws3ed
 rabbitmq_ulimit_open_files: 1024
+rabbitmq_systemd_limit_nofile: 300000
 rabbitmq_memory_high_watermark: 0.4
 rabbitmq_create_cluster: no
 rabbitmq_cluster_master: localhost
