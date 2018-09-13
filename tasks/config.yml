@@ -11,6 +11,14 @@
   notify:
     restart rabbitmq-server
 
+- name: create /etc/systemd/system/rabbitmq-server.service.d directory
+  file:
+    path: /etc/systemd/system/rabbitmq-server.service.d
+    state: directory
+    mode: 'u=rwX,g=r,o=r'
+    owner: root
+    group: root
+
 - name: rabbitmq systemd service limits conf
   template:
     src: etc/systemd/limits.conf.j2
