@@ -1,19 +1,21 @@
 ---
 # RabbitMQ user and vhost management
 
-- name: Ensure the users is removed
+- name: Ensure the users are removed
   rabbitmq_user:
     user: "{{ item }}"
     state: absent
   with_items: "{{ rabbitmq_users_removed }}"
+  tags: [configuration,rabbitmq]
 
-- name: Ensure the vhosts is present
+- name: Ensure the vhosts are present
   rabbitmq_vhost:
     name: "{{ item }}"
     state: present
   with_items: "{{ rabbitmq_vhosts }}"
+  tags: [configuration,rabbitmq]
 
-- name: Ensure the users is present
+- name: Ensure the users are present
   rabbitmq_user:
     user: "{{ item.user }}"
     password: "{{ item.password }}"
@@ -34,6 +36,15 @@
     dest: /usr/local/bin
     mode: 0755
   when: "{{ rabbitmq_instant_queues }}"
+  with_items: "{{ rabbitmq_users }}"
+  tags: [configuration,rabbitmq]
+
+- name: Ensure the default vhost contains the HA policy
+  rabbitmq_policy: name=HA pattern='{{ rabbitmq_ha_pattern }}'
+  args:
+   tags:
+    "ha-mode": '{{ rabbitmq_ha_mode }}'
+  when: rabbitmq_create_cluster and rabbitmq_ha_enabled
 
 - name: Ensure requared queues are present
   shell: rabbitmqadmin --username={{ item.0.user }} --password={{ item.0.password }} --vhost={{ item.0.vhost_name }} declare queue name={{ item.1 }} durable={{ item.0.durable }}
@@ -46,8 +57,9 @@
   file: state=link src=/usr/lib/rabbitmq/bin dest=/usr/lib/rabbitmq/sbin
   tags: [configuration,rabbitmq]
 
-- name: Enable the plugins is installed
-  rabbitmq_plugin: names="{{ rabbitmq_plugins | join(',') }}" state=enabled prefix=/usr/lib/rabbitmq
+- name: Enable the plugins are installed
+  rabbitmq_plugin: names="{{ item }}" state=enabled prefix=/usr/lib/rabbitmq
+  with_items: "{{ rabbitmq_plugins }}"
   notify: restart rabbitmq-server
   tags: [configuration,rabbitmq]
 
