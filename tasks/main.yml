@@ -19,4 +19,7 @@
 - include: rabbitmq.yml
   when: 'not rabbitmq_create_cluster or (ansible_fqdn == rabbitmq_cluster_master)'
 
+- include: rabbitmqadmin.yml
+  when: "'rabbitmq_management' in rabbitmq_plugins"
+
 - meta: flush_handlers
