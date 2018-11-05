@@ -41,6 +41,15 @@
     - "{{ rabbitmq_vhosts_queues }}"
     - queues
   when: rabbitmq_instant_queues
+  
+- name: Symlink RabbitMQ bin to sbin
+  file: state=link src=/usr/lib/rabbitmq/bin dest=/usr/lib/rabbitmq/sbin
+  tags: [configuration,rabbitmq]
+
+- name: Enable the plugins is installed
+  rabbitmq_plugin: names="{{ rabbitmq_plugins | join(',') }}" state=enabled prefix=/usr/lib/rabbitmq
+  notify: restart rabbitmq-server
+  tags: [configuration,rabbitmq]
 
 - name: Make a shovle for for queues
   shell: rabbitmqctl set_parameter shovel {{ item.shovel_name }} '{{ item.shovel_json }}'
