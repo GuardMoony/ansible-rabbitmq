@@ -1,0 +1,34 @@
+---
+# Install required packages
+
+- name: installing prerequisite
+  yum:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - epel-release
+    - wget
+
+- name: downloading Erlang
+  get_url:
+    url: "{{ erlang_rpm_package_url }}/{{ erlang_rpm_package_name }}"
+    dest: "/opt/{{ erlang_rpm_package_name }}"
+
+- name: install Erlang packages
+  yum:
+    update_cache: yes
+    name: "/opt/{{ erlang_rpm_package_name }}"
+    state: present
+
+
+- name: downloading RabbitMQ
+  get_url:
+    url: "{{ rabbit_rpm_package_url }}/{{ rabbit_rpm_package_name }}"
+    dest: "/opt/{{ rabbit_rpm_package_name }}"
+
+- name: install RabbitMQ package
+  yum:
+    update_cache: yes
+    name: "/opt/{{ rabbit_rpm_package_name }}"
+    state: present

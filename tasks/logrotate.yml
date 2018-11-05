@@ -1,0 +1,11 @@
+---
+# Customize logrotate rules
+
+- name: customize logrotate rules
+  template:
+    src: etc/logrotate.d/rabbitmq-server.j2
+    dest: /etc/logrotate.d/rabbitmq-server
+    owner: root
+    group: root
+    mode: 0644
+  tags: ['rabbitmq', 'rabbitmq-logrotate']

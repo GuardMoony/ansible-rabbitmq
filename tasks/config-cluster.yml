@@ -37,3 +37,11 @@
     path: /var/lib/rabbitmq/.erlang.cookie.old
     state: absent
   changed_when: false
+
+- name: ensure pid directory is present and has the right permissions
+  file:
+    path: /var/run/rabbitmq/
+    owner: rabbitmq
+    group: rabbitmq
+    mode: 0700
+    state: directory
