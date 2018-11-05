@@ -31,6 +31,12 @@ them are as follows.
 	# Short hostname of cluster master, on master node it must be specified too
 	rabbitmq_cluster_master: localhost
 
+	# The frequency rotation of log files.
+	rabbitmq_logrotate_period: weekly
+
+	# The number of log files that you want to store.
+	rabbitmq_logrotate_amount: 20
+
 	# Vhosts to create
 	rabbitmq_vhosts: []
 
@@ -52,8 +58,8 @@ them are as follows.
 	rabbitmq_users_removed:
 	  - guest
 
-       # Use FQDN
-       rabbitmq_use_longname: 'true'
+    # Use FQDN
+    rabbitmq_use_longname: 'true'
 
 Examples
 --------
