@@ -19,9 +19,11 @@
   when: ('cannot cluster node with itself' not in join_cluster_output.stderr) and
         ('already_member' not in join_cluster_output.stderr) and
         (join_cluster_output.rc != 0)
+
+- name: start rabbitmq app
+  shell: rabbitmqctl start_app
         
 - name: setting policy mode
   shell: rabbitmqctl set_policy ha-all "^" '{"ha-mode":"all"}'
 
-- name: start rabbitmq app
-  shell: rabbitmqctl start_app
+
