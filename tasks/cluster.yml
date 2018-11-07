@@ -23,7 +23,3 @@
 - name: start rabbitmq app
   shell: rabbitmqctl start_app
         
-- name: setting policy mode
-  shell: rabbitmqctl set_policy ha-all "^" '{"ha-mode":"all"}'
-
-

@@ -42,10 +42,10 @@
 - name: Ensure the default vhost contains the HA policy
   rabbitmq_policy: 
     name: HA 
-    pattern: '{{ rabbitmq_ha_pattern }}'
+    pattern: .*
   args:
    tags:
-    "ha-mode": '{{ rabbitmq_ha_mode }}'
+    ha-mode: all
   when: rabbitmq_create_cluster
 
 - name: Ensure requared queues are present
