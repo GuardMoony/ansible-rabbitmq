@@ -30,13 +30,13 @@
   no_log: true
   tags: [configuration,rabbitmq]
 
-- name: Ensure rabbitmqadmin script is present
-  copy:
-    src: rabbitmqadmin
-    dest: /usr/local/bin
+- name: Install management command line tool
+  get_url:
+    url: http://localhost:15672/cli/rabbitmqadmin
+    dest: /usr/local/bin/rabbitmqadmin
     mode: 0755
+    use_proxy: no
   when: "{{ rabbitmq_instant_queues }}"
-  with_items: "{{ rabbitmq_users }}"
   tags: [configuration,rabbitmq]
 
 - name: Ensure the default vhost contains the HA policy

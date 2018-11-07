@@ -21,7 +21,6 @@
     name: "/opt/{{ erlang_rpm_package_name }}"
     state: present
 
-
 - name: downloading RabbitMQ
   get_url:
     url: "{{ rabbit_rpm_package_url }}/{{ rabbit_rpm_package_name }}"
@@ -32,3 +31,9 @@
     update_cache: yes
     name: "/opt/{{ rabbit_rpm_package_name }}"
     state: present
+
+- name: install openssl
+  yum:
+    name: openssl 
+    state: present
+  when: rabbitmq_ssl and rabbitmq_ssl_use_snakeoil_cert
