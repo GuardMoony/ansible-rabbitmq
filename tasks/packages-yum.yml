@@ -36,4 +36,4 @@
   yum:
     name: openssl 
     state: present
-  when: rabbitmq_ssl and rabbitmq_ssl_use_snakeoil_cert
+  when: rabbitmq_ssl or rabbitmq_ssl_use_snakeoil_cert

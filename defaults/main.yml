@@ -10,6 +10,12 @@ rabbitmq_vhosts: []
 rabbitmq_use_longname: 'false'
 rabbitmq_group_name: 'rabbitmq'
 
+rabbitmq_ssl: false
+rabbitmq_ssl_use_snakeoil_cert: false
+rabbitmq_ssl_ca_cert:
+rabbitmq_ssl_cert:
+rabbitmq_ssl_cert:
+
 rabbitmq_logrotate_period: weekly
 rabbitmq_logrotate_amount: 20
 
@@ -42,13 +48,13 @@ rabbitmq_users:
 rabbitmq_users_removed:
   - guest
 
-rabbitmq_vhosts_queues:
-  - vhost_name:
-    queues: []
-    user:
-    password:
-    durable: 'true'
-
+rabbitmq_ssl
+rabbitmq_ssl
+rabbitmq_ssl
+rabbitmq_ssl
+rabbitmq_ssl
+rabbitmq_ssl
+rabbitmq_ssl
 ##   Requares additional plugin enabled: rabbitmq_shovel
 ##   See https://www.rabbitmq.com/shovel-dynamic.html for json format
 rabbitmq_shovels:
