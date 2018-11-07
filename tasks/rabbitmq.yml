@@ -27,7 +27,7 @@
     tags: "{{ item.tags|default('') }}"
     force: yes
   with_items: "{{ rabbitmq_users }}"
-  no_log: true
+  no_log: false
   tags: [configuration,rabbitmq]
 
 - name: Install management command line tool
