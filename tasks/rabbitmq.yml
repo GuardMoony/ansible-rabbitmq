@@ -59,13 +59,7 @@
   file: state=link src=/usr/lib/rabbitmq/bin dest=/usr/lib/rabbitmq/sbin
   tags: [configuration,rabbitmq]
 
-- name: Enable the plugins are installed
-  rabbitmq_plugin: names="{{ item }}" state=enabled prefix=/usr/lib/rabbitmq
-  with_items: "{{ rabbitmq_plugins }}"
-  notify: restart rabbitmq-server
-  tags: [configuration,rabbitmq]
-
-- name: Make a shovle for for queues
+- name: Make a shovel for for queues
   shell: rabbitmqctl set_parameter shovel {{ item.shovel_name }} '{{ item.shovel_json }}'
   with_items:
     - "{{ rabbitmq_shovels }}"
