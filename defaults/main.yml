@@ -48,13 +48,6 @@ rabbitmq_users:
 rabbitmq_users_removed:
   - guest
 
-rabbitmq_ssl
-rabbitmq_ssl
-rabbitmq_ssl
-rabbitmq_ssl
-rabbitmq_ssl
-rabbitmq_ssl
-rabbitmq_ssl
 ##   Requares additional plugin enabled: rabbitmq_shovel
 ##   See https://www.rabbitmq.com/shovel-dynamic.html for json format
 rabbitmq_shovels:
