@@ -8,6 +8,7 @@ rabbitmq_create_cluster: no
 rabbitmq_cluster_master: localhost
 rabbitmq_vhosts: []
 rabbitmq_use_longname: 'false'
+rabbitmq_group_name: 'rabbitmq'
 
 rabbitmq_logrotate_period: weekly
 rabbitmq_logrotate_amount: 20
@@ -25,6 +26,9 @@ rabbitmq_logrotate_amount: 20
 rabbitmq_plugins:
   - rabbitmq_management
   - rabbitmq_management_agent
+  - rabbitmq_federation
+  - rabbitmq_federation_management
+  - rabbitmq_shovel
 
 rabbitmq_users:
   - user: admin
