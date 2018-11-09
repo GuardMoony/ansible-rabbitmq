@@ -7,7 +7,6 @@ rabbitmq_memory_high_watermark: 0.4
 rabbitmq_create_cluster: no
 rabbitmq_cluster_master: localhost
 rabbitmq_vhosts: []
-rabbitmq_use_longname: 'false'
 rabbitmq_group_name: 'rabbitmq'
 
 rabbitmq_ssl: false
@@ -64,5 +63,3 @@ rabbit_rpm_package_name: rabbitmq-server-3.7.4-1.el6.noarch.rpm
 
 erlang_rpm_package_url: https://github.com/rabbitmq/erlang-rpm/releases/download/v19.3.6.8
 erlang_rpm_package_name: erlang-19.3.6.8-1.el6.x86_64.rpm
-
-rabbit_update_host: True
