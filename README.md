@@ -58,9 +58,6 @@ them are as follows.
 	rabbitmq_users_removed:
 	  - guest
 
-    # Use FQDN
-    rabbitmq_use_longname: 'true'
-
 Examples
 --------
 

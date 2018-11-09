@@ -27,14 +27,9 @@
 - include: service.yml
 
 - include: cluster.yml
-  when: 
-    - ((ansible_hostname | lower != rabbitmq_cluster_master | lower) and (rabbitmq_use_longname | lower == "false")) or
-      ((ansible_fqdn | lower != rabbitmq_cluster_master | lower) and (rabbitmq_use_longname | lower == "true"))
-    - rabbitmq_create_cluster == True
+  when: (ansible_hostname | lower != rabbitmq_cluster_master | lower) and rabbitmq_create_cluster == True
 
 - include: rabbitmq.yml
-  when: (not rabbitmq_create_cluster) or
-        (ansible_hostname | lower == rabbitmq_cluster_master | lower) or
-        (ansible_fqdn | lower == rabbitmq_cluster_master | lower)
+  when: (not rabbitmq_create_cluster) or (ansible_hostname | lower == rabbitmq_cluster_master | lower)
 
 - meta: flush_handlers
